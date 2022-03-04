@@ -17,11 +17,13 @@ public class NewCharacterMovement : MonoBehaviour
     Vector3 playerVelocity;
     public bool groundedPlayer;
 
+    PlayerInputs inputs;
     // Start is called before the first frame update
     void Start()
     {
         cc = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
+        inputs = GetComponent<PlayerInputs>();
     }
 
     // Update is called once per frame
@@ -34,8 +36,8 @@ public class NewCharacterMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
+        var h = Input.GetAxis(inputs.horizontal);
+        var v = Input.GetAxis(inputs.vertical);
 
         if(h != 0 || v != 0)
         {
@@ -59,7 +61,7 @@ public class NewCharacterMovement : MonoBehaviour
     }
     public void ProcessGravity()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && groundedPlayer)
+        if (Input.GetKeyDown(inputs.jump) && groundedPlayer)
         {
             anim.SetBool("Jumping", true);
             playerVelocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravityForce);

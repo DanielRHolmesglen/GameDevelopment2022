@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [Tooltip("Movement Values")]
+    /*[Tooltip("Movement Values")]
     [SerializeField] float speedMultiplier, rotationSpeed, gravityForce, jumpForce;
 
     //Components
@@ -69,5 +69,5 @@ public class CharacterMovement : MonoBehaviour
         }
         playerVelocity.y += gravityForce * Time.deltaTime;
         cc.Move(playerVelocity * Time.deltaTime);
-    }
+    }*/
 }

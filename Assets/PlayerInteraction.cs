@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    CharacterMovement cm;
+    /*CharacterMovement cm;
     [SerializeField] public GameObject currentWeapon;
     PlayerInputs inputs;
     // Start is called before the first frame update
@@ -35,5 +35,5 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("oops no weapon");
         }
-    }
+    }*/
 }

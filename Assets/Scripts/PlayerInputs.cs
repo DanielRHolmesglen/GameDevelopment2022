@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class PlayerInputs : MonoBehaviour
 {
-    public int playerCount;
+    public int playerNum = 1;
     [HideInInspector]
-    public string vertical, horizontal;
+    public KeyCode jump, fire, taunt, interact;
     [HideInInspector]
-    public KeyCode jump, interaction, fire, taunt;
+    public string horizontal, vertical;
+
     private void Awake()
     {
         DetermineInputs();
     }
     private void DetermineInputs()
     {
-        switch (playerCount)
+        switch (playerNum)
         {
             case 1:
                 vertical = "P1Vertical";
                 horizontal = "P1Horizontal";
                 jump = KeyCode.F;
-                interaction = KeyCode.T;
+                interact = KeyCode.T;
                 fire = KeyCode.G;
                 taunt = KeyCode.R;
                 break;
@@ -29,13 +30,12 @@ public class PlayerInputs : MonoBehaviour
                 vertical = "P2Vertical";
                 horizontal = "P2Horizontal";
                 jump = KeyCode.RightAlt;
-                interaction = KeyCode.Comma;
+                interact = KeyCode.Comma;
                 fire = KeyCode.RightControl;
                 taunt = KeyCode.Period;
                 break;
-        }
             
-
-
+        }
     }
+    
 }
