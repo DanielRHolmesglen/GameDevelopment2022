@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    /*[Tooltip("Movement Values")]
+    [Tooltip("Movement Values")]
     [SerializeField] float speedMultiplier, rotationSpeed, gravityForce, jumpForce;
 
     //Components
@@ -51,11 +51,9 @@ public class CharacterMovement : MonoBehaviour
             anim.SetBool("HasInput", false);
         }
 
-        var desiredDirection = Quaternion.LookRotation(movementDirection);
-        transform.rotation = Quaternion.Lerp(transform.rotation, desiredDirection, rotationSpeed);
+        DetermineRotation();
 
         var animationVector = transform.InverseTransformDirection(cc.velocity);
-
         anim.SetFloat("ForwardMomentum", animationVector.z);
         anim.SetFloat("SideMomentum", animationVector.x);
         ProcessGravity();
@@ -69,5 +67,19 @@ public class CharacterMovement : MonoBehaviour
         }
         playerVelocity.y += gravityForce * Time.deltaTime;
         cc.Move(playerVelocity * Time.deltaTime);
-    }*/
+    }
+    public void DetermineRotation()
+    {
+        if (target == null)
+        {
+            var desiredDirection = Quaternion.LookRotation(movementDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, desiredDirection, rotationSpeed);
+        }
+        else
+        {
+            var desiredDirection = Quaternion.LookRotation(target.position - transform.position);
+            transform.rotation = Quaternion.Lerp(transform.rotation, desiredDirection, rotationSpeed);
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+        }
+    }
 }

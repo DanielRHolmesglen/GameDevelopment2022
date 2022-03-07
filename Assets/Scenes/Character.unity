@@ -430,8 +430,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113338545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.44, y: 0.29, z: -4.61}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.44, y: 0.95, z: -4.61}
+  m_LocalScale: {x: 3.3765, y: 3.3765, z: 3.3765}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -1614,6 +1614,7 @@ GameObject:
   - component: {fileID: 1292537793}
   - component: {fileID: 1292537789}
   - component: {fileID: 1292537794}
+  - component: {fileID: 1292537795}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1651,7 +1652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205d72fb151fdc64aa66ad4d67139fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 0}
 --- !u!4 &1292537790
 Transform:
   m_ObjectHideFlags: 0
@@ -1681,12 +1681,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 3
-  rotationSpeed: 0.015
-  gravityForce: -9.81
+  rotationSpeed: 50
+  gravityForce: -9.86
   jumpForce: 1
-  anim: {fileID: 0}
+  anim: {fileID: 619516851}
   freezeMovement: 0
-  groundedPlayer: 0
+  groundedPlayer: 1
   target: {fileID: 0}
 --- !u!114 &1292537792
 MonoBehaviour:
@@ -1729,13 +1729,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8897bd8d7714e24f98eb47fd9d659ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCount: 1
-  vertical: 
-  horizontal: 
+  playerNum: 1
   jump: 98
-  interaction: 0
   fire: 0
   taunt: 0
+  interact: 0
+  horizontal: 
+  vertical: 
+--- !u!114 &1292537795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292537787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6612db7f23e68f8489d4da42bfbe9c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 4.03
+  viewAngle: 0
 --- !u!1 &1350691697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,13 +1827,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350691697}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.45420128, y: 0.115865745, z: -0.07874289, w: 0.8798158}
+  m_LocalPosition: {x: -9.30672, y: 24.396576, z: -22.137468}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 54.833, y: 13.285, z: -3.315}
 --- !u!114 &1350691701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,7 +1856,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -2126,13 +2139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8897bd8d7714e24f98eb47fd9d659ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCount: 2
-  vertical: 
-  horizontal: 
+  playerNum: 1
   jump: 98
-  interaction: 0
   fire: 0
   taunt: 0
+  interact: 0
+  horizontal: 
+  vertical: 
 --- !u!114 &1454299786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2145,7 +2158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205d72fb151fdc64aa66ad4d67139fd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 0}
 --- !u!114 &1454299787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2187,10 +2199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c972d2e2544825b429ce797ed1c668b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 3
-  rotationSpeed: 0.015
-  gravityForce: -9.81
-  jumpForce: 1
+  speedMultiplier: 0
+  rotationSpeed: 0
+  gravityForce: 0
+  jumpForce: 0
   anim: {fileID: 0}
   freezeMovement: 0
   groundedPlayer: 0
