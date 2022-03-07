@@ -73,12 +73,12 @@ public class CharacterMovement : MonoBehaviour
         if (target == null)
         {
             var desiredDirection = Quaternion.LookRotation(movementDirection);
-            transform.rotation = Quaternion.Lerp(transform.rotation, desiredDirection, rotationSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, desiredDirection, rotationSpeed * Time.deltaTime);
         }
         else
         {
             var desiredDirection = Quaternion.LookRotation(target.position - transform.position);
-            transform.rotation = Quaternion.Lerp(transform.rotation, desiredDirection, rotationSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, desiredDirection, rotationSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
         }
     }
