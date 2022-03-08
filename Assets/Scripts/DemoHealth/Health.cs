@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    private void UpdateHealthUI()
+    public virtual void UpdateHealthUI()
     {
         if (!healthUI) return;
         healthUI.maxValue = maxHealth;
