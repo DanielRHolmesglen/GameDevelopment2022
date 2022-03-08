@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    /*CharacterMovement cm;
-    [SerializeField] public GameObject currentWeapon;
+    CharacterMovement cm;
+    //[SerializeField] public GameObject currentWeapon;
     PlayerInputs inputs;
+    WeaponHandler weaponHandler;
     // Start is called before the first frame update
     void Start()
     {
         cm = GetComponent<CharacterMovement>();
         inputs = GetComponent<PlayerInputs>();
+        weaponHandler = GetComponent<WeaponHandler>();
     }
 
     // Update is called once per frame
@@ -21,19 +23,20 @@ public class PlayerInteraction : MonoBehaviour
         {
             Shoot();
         }
+        if (Input.GetKeyDown(inputs.drop)) weaponHandler.DropWeapon();
         cm.anim.SetBool("Dance", Input.GetKey(inputs.taunt));
         
     }
     void Shoot()
     {
         cm.anim.SetTrigger("Shoot");
-        if (currentWeapon != null)
+        if (weaponHandler.currentWeapon != null)
         {
-            currentWeapon.GetComponent<IShootable>().Shoot();
+            weaponHandler.currentWeapon.GetComponent<IShootable>().Shoot();
         }
         else
         {
             Debug.Log("oops no weapon");
         }
-    }*/
+    }
 }

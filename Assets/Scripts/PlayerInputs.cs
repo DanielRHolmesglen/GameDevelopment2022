@@ -6,7 +6,7 @@ public class PlayerInputs : MonoBehaviour
 {
     public int playerNum = 1;
     [HideInInspector]
-    public KeyCode jump, fire, taunt, interact;
+    public KeyCode jump, fire, taunt, interact, drop;
     [HideInInspector]
     public string horizontal, vertical;
 
@@ -23,6 +23,7 @@ public class PlayerInputs : MonoBehaviour
                 horizontal = "P1Horizontal";
                 jump = KeyCode.F;
                 interact = KeyCode.T;
+                drop = KeyCode.H;
                 fire = KeyCode.G;
                 taunt = KeyCode.R;
                 break;
