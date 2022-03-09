@@ -25,6 +25,7 @@ public class PlayerInteraction : MonoBehaviour
         }
         if (Input.GetKeyDown(inputs.drop)) weaponHandler.DropWeapon();
         cm.anim.SetBool("Dance", Input.GetKey(inputs.taunt));
+        if(Input.GetKeyDown(inputs.interact)) weaponHandler.PickClosestWeapon();
         
     }
     void Shoot()
