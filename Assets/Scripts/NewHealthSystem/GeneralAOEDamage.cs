@@ -15,6 +15,6 @@ public class GeneralAOEDamage : MonoBehaviour
             return;
         }
 
-        healthScript.TakeDamage(damageAmount);
+        healthScript.TakeDamage(damageAmount, 0);
     }
 }

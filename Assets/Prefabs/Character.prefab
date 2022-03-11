@@ -686,6 +686,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f40d7a6537408042932e9b21b8e43dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWeapon: {fileID: 0}
+  weaponHand: {fileID: 3108424487901017680}
+  reachableObjects: []
+  reach: 1
+  pickableLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &7700927011974430117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,6 +722,7 @@ MonoBehaviour:
   fire: 0
   taunt: 0
   interact: 0
+  drop: 0
   horizontal: 
   vertical: 
 --- !u!114 &7700927011974430171
@@ -751,7 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  startingHealth: 50
+  startingHealth: 100
   currentHealth: 50
   canBeDamaged: 1
   healthUI: {fileID: 0}

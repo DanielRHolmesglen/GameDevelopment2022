@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
         UpdateHealthUI();
     }
 
-    public virtual void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount, int damager = 0)
     {
         if (!canBeDamaged)
         {
@@ -29,11 +29,11 @@ public class Health : MonoBehaviour
         if(currentHealth <= 0)
         {
             currentHealth = 0;
-            TriggerDeath();
+            TriggerDeath(damager);
         }
         UpdateHealthUI();
     }
-    public virtual void TriggerDeath()
+    public virtual void TriggerDeath(int damager)
     {
         //begin Death animations and stuff
         Debug.Log(gameObject.name + " has been killed");

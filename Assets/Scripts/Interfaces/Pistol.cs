@@ -37,7 +37,7 @@ public class Pistol : MonoBehaviour, IShootable
                         Debug.Log("no script attached to target" + hit.collider.name);
                         return;
                     }
-                    healthScript.TakeDamage(damage);
+                    healthScript.TakeDamage(damage, GetComponentInParent<PlayerInputs>().playerNum);
                     pS.Play();
                     Invoke("TurnOffEffects", 0.25f);
                 }

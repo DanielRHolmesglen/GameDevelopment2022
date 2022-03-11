@@ -14,7 +14,7 @@ public class PlayerInputs : MonoBehaviour
     {
         DetermineInputs();
     }
-    private void DetermineInputs()
+    public void DetermineInputs()
     {
         switch (playerNum)
         {
@@ -35,7 +35,7 @@ public class PlayerInputs : MonoBehaviour
                 fire = KeyCode.RightControl;
                 taunt = KeyCode.Period;
                 break;
-            
+                
         }
     }
     

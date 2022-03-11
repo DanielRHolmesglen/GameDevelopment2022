@@ -31,7 +31,7 @@ public class ShotGun : MonoBehaviour, IShootable
                         Debug.Log("no script attached to target" + hit.collider.name);
                         return;
                     }
-                    healthScript.TakeDamage(damage);
+                    healthScript.TakeDamage(damage, GetComponentInParent<PlayerInputs>().playerNum);
                 }
             }
         }

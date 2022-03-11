@@ -13,7 +13,7 @@ public class GenericDamage : MonoBehaviour
         var health = other.GetComponent<Health>();
         if (!health) return;
 
-        health.TakeDamage(damageAmount);
+        health.TakeDamage(damageAmount, 0);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -21,7 +21,7 @@ public class GenericDamage : MonoBehaviour
         var health = collision.gameObject.GetComponent<Health>();
         if (!health) return;
 
-        health.TakeDamage(damageAmount);
+        health.TakeDamage(damageAmount, 0);
     }
 
 }
