@@ -28,7 +28,7 @@ public class RoundManager : MonoBehaviour
 
     public int maxKills;
     //list of scripts for the game manager to reference
-
+    [SerializeField] RoundUIManager UIManager;
     public void Start()
     {
         SetupScene();
@@ -42,6 +42,7 @@ public class RoundManager : MonoBehaviour
         {
             SpawnPlayer(i);
         }
+        UIManager.UpdateScoreUI();
     }
     //SPAWN PLAYERS
     //takes in a player, finds a random position from the list, and spawns the player in that location.
@@ -75,7 +76,7 @@ public class RoundManager : MonoBehaviour
         {
             EndRound(playerScoring);
         }
-        //update ui
+        if(UIManager != null) UIManager.UpdateScoreUI();
     }
     //RUN TIMER
     //ticks down the timer and checks for end round. passes info to UI manager if it exists
@@ -86,5 +87,6 @@ public class RoundManager : MonoBehaviour
     public void EndRound(int WinningPlayer)
     {
         Debug.Log("Game Over! Player " + WinningPlayer + " Has won the game!");
+        if (UIManager != null) UIManager.DisplayResults(WinningPlayer);
     }
 }
