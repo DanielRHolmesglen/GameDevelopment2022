@@ -26,12 +26,13 @@ public class RoundManager : MonoBehaviour
     //list of spawn positions
     public Transform[] spawnPositions;
 
-    public int maxKills;
+    public int maxKills, roundTime;
     //list of scripts for the game manager to reference
     [SerializeField] RoundUIManager UIManager;
     public void Start()
     {
         SetupScene();
+        StartCoroutine(Timer(roundTime));
     }
     //SETUP SCENE
     //check that all required scripts and prefabs are in the scene. Set up play area, and reset all variables for a new round
@@ -64,7 +65,7 @@ public class RoundManager : MonoBehaviour
     // triggers the end round and passes information on. also calls out to the UI manager if it exists to update.
     public void UpdateScore(int playerScoring, int playerKilled)
     {
-        if(playerScoring == 0 || playerScoring == playerKilled)
+        if (playerScoring == 0 || playerScoring == playerKilled)
         {
             playerScores[playerKilled - 1]--;
         }
@@ -72,21 +73,32 @@ public class RoundManager : MonoBehaviour
         {
             playerScores[playerScoring - 1]++;
         }
-        if(playerScores[playerScoring-1] >= maxKills)
-        {
-            EndRound(playerScoring);
-        }
         if(UIManager != null) UIManager.UpdateScoreUI();
     }
     //RUN TIMER
     //ticks down the timer and checks for end round. passes info to UI manager if it exists
-
+    public IEnumerator Timer(int time)
+    {
+        WaitForSeconds WFS = new WaitForSeconds(1f);
+        while (time > 0)
+        {
+            time--;
+            UIManager.DisplayTimer(time);
+            yield  return WFS;
+        }
+        EndRound();
+    }
     //END ROUND
     // calls an end to the round, triggers any end round events. Most likely this will pass of to another script/object that
     // handles score displays.
-    public void EndRound(int WinningPlayer)
+    public void EndRound()
     {
+        var WinningPlayer = 0;
+        for(int i = 0; i < playerScores.Length; i++)
+        {
+            if (playerScores[i] > WinningPlayer) WinningPlayer = i;
+        }
         Debug.Log("Game Over! Player " + WinningPlayer + " Has won the game!");
-        if (UIManager != null) UIManager.DisplayResults(WinningPlayer);
+        if (UIManager != null) UIManager.DisplayResults(WinningPlayer + 1);
     }
 }

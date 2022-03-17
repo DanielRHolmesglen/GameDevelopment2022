@@ -7,6 +7,7 @@ public class RoundUIManager : MonoBehaviour
     [SerializeField] TMP_Text[] playerScoreUIs;
     [SerializeField] CanvasGroup WinScreen;
     [SerializeField] TMP_Text winningPlayerName;
+    [SerializeField] TMP_Text Timer;
 
     public void UpdateScoreUI()
     {
@@ -20,6 +21,14 @@ public class RoundUIManager : MonoBehaviour
         winningPlayerName.text = "Player " + (winningPlayer).ToString();
         WinScreen.gameObject.SetActive(true);
         StartCoroutine(CanvasFadeIn());
+    }
+    public void DisplayTimer(int time)
+    {
+        var minutes = Mathf.Floor(time / 60).ToString("00");
+        var seconds = (time % 60).ToString("00");
+
+        Timer.text = minutes + ":" + seconds;
+
     }
     IEnumerator CanvasFadeIn()
     {
