@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    public GameData saveData = new GameData();
-    
+    GameData saveData = new GameData();
+
+
     // Update is called once per frame
     void Update()
     {
@@ -27,7 +28,7 @@ public class GameMaster : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             saveData = SaveSystem.instance.LoadGame();
-            Debug.Log("Loaded data.");
+            Debug.Log("Loaded data");
             PrintScore();
         }
         if (Input.GetKeyDown(KeyCode.X))
@@ -37,8 +38,13 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    void PrintScore()
+    public void SaveGame()
+    {
+        SaveSystem.instance.SaveGame(saveData);
+    }
+       public void PrintScore()
     {
         Debug.Log("The current score is " + saveData.score);
     }
+
 }

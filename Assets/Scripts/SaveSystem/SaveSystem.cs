@@ -4,24 +4,24 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveSystem : MonoBehaviour
 {
-    // Makes it a singleton / single instance
     static public SaveSystem instance;
+
     string filePath;
 
     private void Awake()
     {
-        // Check there are no other instances of this class in the scene
-        if (!instance)
+        filePath = Application.persistentDataPath + "/save.data";
+
+        #region singleton
+        if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-
-        filePath = Application.persistentDataPath + "/save.data";
+        #endregion
     }
 
     public void SaveGame(GameData saveData)
@@ -33,12 +33,11 @@ public class SaveSystem : MonoBehaviour
 
         dataStream.Close();
     }
-
     public GameData LoadGame()
     {
         if (File.Exists(filePath))
         {
-            // File exists 
+            //file exists, so return it
             FileStream dataStream = new FileStream(filePath, FileMode.Open);
 
             BinaryFormatter converter = new BinaryFormatter();
@@ -49,7 +48,7 @@ public class SaveSystem : MonoBehaviour
         }
         else
         {
-            // File does not exist
+            //file does not exist
             Debug.LogError("Save file not found in " + filePath);
             return null;
         }

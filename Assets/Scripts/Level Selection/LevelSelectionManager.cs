@@ -5,14 +5,14 @@ using UnityEngine;
 public class LevelSelectionManager : MonoBehaviour
 {
     public GameObject[] levels;
-    public GameMaster gm;
+    public ExampleGameMaster gm;
     public int currentLevel;
     public GameObject levelSelectIndicator;
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.Find("GameMaster").GetComponent<GameMaster>();
-        gm.saveData = SaveSystem.instance.LoadGame();
+        gm = GameObject.Find("GameMaster").GetComponent<ExampleGameMaster>();
+        gm.saveData = ExampleSaveSystem.instance.LoadGame();
         if (!gm.saveData.unlockedLevels.Contains("level1")){ gm.saveData.unlockedLevels.Add("level1"); }
         currentLevel = 0;
         foreach(GameObject level in levels)

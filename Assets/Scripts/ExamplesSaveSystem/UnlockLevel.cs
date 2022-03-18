@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UnlockLevel : MonoBehaviour
 {
-    GameMaster gm;
+    ExampleGameMaster gm;
     public string levelName;
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+        gm = GameObject.Find("GameMaster").GetComponent<ExampleGameMaster>();
         if (gm)
         {
             Debug.Log("GM found");
@@ -25,6 +25,6 @@ public class UnlockLevel : MonoBehaviour
             Debug.Log("saved level");
         }
         else { Debug.Log("Failed to save"); }
-        SaveSystem.instance.SaveGame(gm.saveData);
+        ExampleSaveSystem.instance.SaveGame(gm.saveData);
     }
 }

@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
-public class GameData
+public class ExampleGameData
 {
   public int score = 0;
     //added by me
     public List<string> unlockedLevels;
-    public Dictionary<string, int> playerScores;
+    public Dictionary<string, int> playerScores = new Dictionary<string, int>();
+    
+
   public void AddScore(int points)
   {
     score += points;
@@ -22,4 +25,5 @@ public class GameData
     {
         unlockedLevels.Add(level);
     }
+    
 }
