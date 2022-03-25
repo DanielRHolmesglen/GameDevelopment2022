@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerInputs : MonoBehaviour
 {
@@ -9,10 +10,12 @@ public class PlayerInputs : MonoBehaviour
     public KeyCode jump, fire, taunt, interact, drop;
     [HideInInspector]
     public string horizontal, vertical;
+    public string playerName;
 
     private void Awake()
     {
         DetermineInputs();
+        UpdateUI();
     }
     public void DetermineInputs()
     {
@@ -37,6 +40,10 @@ public class PlayerInputs : MonoBehaviour
                 break;
                 
         }
+    }
+    public void UpdateUI()
+    {
+        GetComponentInChildren<TMP_Text>().text = playerName;
     }
     
 }

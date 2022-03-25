@@ -20,11 +20,11 @@ public class RoundManager : MonoBehaviour
         #endregion
     }
     //list of players
-    public GameObject[] players;
+    public List<GameObject> players;
     //list of scores
     public int[] playerScores;
     //list of spawn positions
-    public Transform[] spawnPositions;
+    public List<Transform> spawnPositions;
 
     public int maxKills, roundTime;
     //list of scripts for the game manager to reference
@@ -39,7 +39,20 @@ public class RoundManager : MonoBehaviour
     //run the spawn players function for each player
     public void SetupScene()
     {
-        for(int i = 1; i < players.Length+1; i++)
+        var playerNumber = MasterGameManager.instance.numberOfPlayers;
+        roundTime = MasterGameManager.instance.roundTime;
+        maxKills = MasterGameManager.instance.killLimit;
+
+        playerScores = new int[playerNumber];
+
+        for(int i = 0; i < playerNumber; i++)
+        {
+            if(i >= players.Count)
+            {
+                players.Add(players[0]);
+            }
+        }
+        for (int i = 1; i < players.Count+1; i++)
         {
             SpawnPlayer(i);
         }
@@ -49,11 +62,15 @@ public class RoundManager : MonoBehaviour
     //takes in a player, finds a random position from the list, and spawns the player in that location.
     public void SpawnPlayer(int playerNumber)
     {
-        var player = Instantiate(players[playerNumber-1], spawnPositions[playerNumber-1].position, players[playerNumber-1].transform.rotation);
+        var spawnPoint = new Vector3(Random.Range(spawnPositions[0].position.x, spawnPositions[1].position.x), 0, Random.Range(spawnPositions[0].position.z, spawnPositions[1].position.z));
+        var player = Instantiate(players[playerNumber-1], spawnPoint, players[playerNumber-1].transform.rotation);
 
         var playerInputs = player.GetComponent<PlayerInputs>();
         playerInputs.playerNum = playerNumber;
+        playerInputs.playerName = MasterGameManager.instance.playersNames[playerNumber - 1];
         playerInputs.DetermineInputs();
+        playerInputs.UpdateUI();
+
 
         var playerHealth = player.GetComponent<PlayerHealth>();
         playerHealth.canBeDamaged = false;
