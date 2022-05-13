@@ -42,7 +42,11 @@ public class ShotGun : MonoBehaviour, IShootable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * range);
+        foreach (Transform raypoint in raycastPoints)
+        {
+            Gizmos.DrawLine(raypoint.position, raypoint.position + raypoint.forward * range);
+        }
+            
     }
 #endif
 }
