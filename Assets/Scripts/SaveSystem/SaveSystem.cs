@@ -49,8 +49,8 @@ public class SaveSystem : MonoBehaviour
         else
         {
             //file does not exist
-            Debug.LogError("Save file not found in " + filePath);
-            return null;
+            Debug.LogError("Save file not found in " + filePath + " . Creating new gameData");
+            return new GameData();
         }
     }
 }

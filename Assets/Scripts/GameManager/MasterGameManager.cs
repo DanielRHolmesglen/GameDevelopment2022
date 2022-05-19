@@ -21,11 +21,28 @@ public class MasterGameManager : MonoBehaviour
         #endregion
     }
     //get a blank save file. This can be overriden by loading 
-    GameData saveData = new GameData();
+    public GameData saveData;// = new GameData();
 
     public string LevelToPlay;
     public List<string> playersNames = new List<string>();
-    public int numberOfPlayers;
-    public int roundTime;
-    public int killLimit;
+    public int numberOfPlayers = 2;
+    public int roundTime = 60;
+    public int killLimit = 10;
+
+    public void Start()
+    {
+        saveData = SaveSystem.instance.LoadGame();
+
+        numberOfPlayers = saveData.numberOfPlayers;
+        roundTime = saveData.timeLimit;
+        killLimit = saveData.killCount;
+
+        foreach(KeyValuePair<string, int> name in saveData.playerScores)
+        {
+            if(playersNames.Count < numberOfPlayers)
+            {
+                playersNames.Add(name.Key);
+            }
+        }
+    }
 }

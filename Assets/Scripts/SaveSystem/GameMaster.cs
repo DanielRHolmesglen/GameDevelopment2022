@@ -12,12 +12,12 @@ public class GameMaster : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            saveData.AddScore(1);
+            //saveData.AddScore(1);
             PrintScore();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            saveData.AddScore(-1);
+           //// saveData.AddScore(-1);
             PrintScore();
         }
         if (Input.GetKeyDown(KeyCode.S))
@@ -33,7 +33,7 @@ public class GameMaster : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            saveData.ResetData();
+            //saveData.ResetData();
             PrintScore();
         }
     }
@@ -44,7 +44,7 @@ public class GameMaster : MonoBehaviour
     }
        public void PrintScore()
     {
-        Debug.Log("The current score is " + saveData.score);
+        //Debug.Log("The current score is " + saveData.score);
     }
 
 }

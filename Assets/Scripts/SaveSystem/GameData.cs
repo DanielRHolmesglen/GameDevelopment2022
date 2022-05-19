@@ -5,15 +5,23 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public int score = 0;
+    
+
+    /// <summary>
+    /// game settings
+    /// </summary>
+    public int timeLimit = 60;
+    public int numberOfPlayers = 2;
+    public int killCount = 5;
     public Dictionary<string, int> playerScores = new Dictionary<string, int>();
 
-    public void AddScore(int points)
+    public void AddPlayerScore(string name, int score)
     {
-        score += points;
+        playerScores.Add(name, score);
     }
-    public void ResetData()
+
+    public void ShowScores()
     {
-        score = 0;
+        Debug.Log(playerScores);
     }
 }
