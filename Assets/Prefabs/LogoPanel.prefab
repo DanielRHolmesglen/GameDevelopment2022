@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8669650103408790927}
   - component: {fileID: 5036215908108205819}
   - component: {fileID: 584771482829787753}
+  - component: {fileID: 2070513329}
+  - component: {fileID: 2070513328}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: DotPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,6 +77,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &2070513329
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794191056908765079}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &2070513328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794191056908765079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8007b99b2aa1344398e7328c6345fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  can: {fileID: 2070513329}
+  sinLength: 2
+  sinSpeed: 0.005
+  alphaMin: 0.5
+  alphaMax: 0.8
 --- !u!1 &2904298263404916995
 GameObject:
   m_ObjectHideFlags: 0
