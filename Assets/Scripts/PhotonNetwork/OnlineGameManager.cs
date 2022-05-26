@@ -11,7 +11,8 @@ using Photon.Realtime;
 public class OnlineGameManager : MonoBehaviourPunCallbacks
 {
 
-
+    public int MaxPlayerCount = 4;
+    bool isFull;
         #region Photon Callbacks
 
 
@@ -47,7 +48,15 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
             Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
         }
         Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-        PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+        if (isFull)
+        {
+            PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+        }
+        else
+        {
+            Debug.Log("Attempted to load scene but there is not enough players");
+        }
+        
     }
 
 
@@ -63,9 +72,15 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
-
-
-            LoadArena();
+            
+            if(PhotonNetwork.CountOfPlayers == MaxPlayerCount)
+            {
+                isFull = true;
+            }
+            else if (PhotonNetwork.CountOfPlayers < MaxPlayerCount)
+            {
+                isFull = false;
+            }
         }
     }
 
@@ -79,8 +94,14 @@ public class OnlineGameManager : MonoBehaviourPunCallbacks
         {
             Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
 
-
-            LoadArena();
+            if (PhotonNetwork.CountOfPlayers == MaxPlayerCount)
+            {
+                isFull = true;
+            }
+            else if (PhotonNetwork.CountOfPlayers < MaxPlayerCount)
+            {
+                isFull = false;
+            }
         }
     }
 
