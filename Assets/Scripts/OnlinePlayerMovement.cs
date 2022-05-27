@@ -26,11 +26,15 @@ public class OnlinePlayerMovement : MonoBehaviour
         cc = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
         //inputs = GetComponent<PlayerInputs>();
+        //new
+        view = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!view.IsMine) return;
+
         groundedPlayer = cc.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {

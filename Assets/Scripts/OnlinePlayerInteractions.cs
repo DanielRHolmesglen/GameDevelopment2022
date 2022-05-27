@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class OnlinePlayerInteractions : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class OnlinePlayerInteractions : MonoBehaviour
     //[SerializeField] public GameObject currentWeapon;
     //PlayerInputs inputs;
     WeaponHandler weaponHandler;
+    PhotonView view;
     // Start is called before the first frame update
     void Start()
     {
         cm = GetComponent<OnlinePlayerMovement>();
+        view = GetComponent<PhotonView>();
         //inputs = GetComponent<PlayerInputs>();
         weaponHandler = GetComponent<WeaponHandler>();
     }
@@ -19,6 +22,7 @@ public class OnlinePlayerInteractions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!view.IsMine) return;
         if (Input.GetKeyDown(KeyCode.F))
         {
             Shoot();

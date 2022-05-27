@@ -102,6 +102,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     public void EnterName()
     {
         PhotonNetwork.NickName = playerNameField.text;
+        
         progressLabel.SetActive(false);
         controlPanel.SetActive(false);
         connectPanel.SetActive(true);

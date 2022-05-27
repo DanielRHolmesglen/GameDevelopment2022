@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 
 public class OnlineHealth : Health
@@ -26,7 +27,7 @@ public class OnlineHealth : Health
     }
     public override void Die()
     {
-        RoundManager.instance.SpawnPlayer(GetComponent<PlayerInputs>().playerNum);
+        RoundManager.instance.SpawnPlayer(GetComponent<PhotonView>().OwnerActorNr);
         Destroy(gameObject);
     }
     public override void UpdateHealthUI()
