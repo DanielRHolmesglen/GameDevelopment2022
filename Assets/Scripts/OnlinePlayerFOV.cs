@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterFOV : MonoBehaviour
+public class OnlinePlayerFOV : MonoBehaviour
 {
     public float viewRadius;
     [Range(0, 360)]
@@ -82,3 +82,4 @@ public class CharacterFOV : MonoBehaviour
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 }
+
